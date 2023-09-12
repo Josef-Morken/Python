@@ -1,0 +1,30 @@
+from art import logo
+import random
+from replit import clear
+
+def play_game():
+  print (logo)
+  print("Welcome to the Number Guessing Game.")
+  game_mode = input ("Which difficulty would you like? Easy or Hard? ")
+  if game_mode.lower() == "easy":
+    player_lives = 10
+  else:
+    player_lives = 5  
+  print(f"You have {player_lives} attempts to guess the number between 1 and 100.")
+  number = random.randint(1,100)
+  while player_lives > 0:    
+    player_guess = int(input("Enter your best guess: "))
+    if player_guess > number:
+      player_lives -= 1
+      print(f"Your guess was too high. {player_lives} lives left.")
+    if player_guess < number:
+      player_lives -= 1
+      print(f"Your guess was too low. {player_lives} lives left.")
+    if player_guess == number:
+      print(f"Congratulations! You guessed correctly! The answer was {number}!")
+  if player_lives == 0:
+    print(f"Unfortunately you couldn't guess the correct number. It was {number}.")
+    
+while input("Would you like to play the number guessing game? y or n: ") == "y":
+  clear()
+  play_game() 
